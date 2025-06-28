@@ -1,0 +1,28 @@
+# netlify.toml
+
+[build]
+  # Netlify servirá los archivos desde la raíz del repo
+  publish   = "."
+  # Carpeta donde están tus funciones serverless
+  functions = "netlify/functions"
+
+# Protegemos psia.html
+[[redirects]]
+  from   = "/psia.html"
+  to     = "/.netlify/functions/protect?file=psia.html"
+  status = 200
+  force  = true
+
+# Protegemos temas.html
+[[redirects]]
+  from   = "/temas.html"
+  to     = "/.netlify/functions/protect?file=temas.html"
+  status = 200
+  force  = true
+
+# Añade más páginas protegidas si las necesitas
+# [[redirects]]
+#   from   = "/otra.html"
+#   to     = "/.netlify/functions/protect?file=otra.html"
+#   status = 200
+#   force  = true
