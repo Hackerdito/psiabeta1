@@ -100,7 +100,7 @@
         })
         .then(idToken => {
           console.log('🧾 idToken recibido:', idToken.slice(0,10) + '…');
-          document.cookie = `idToken=${idToken}; path=/; secure; samesite=strict;`;
+          document.cookie = `idToken=${idToken}; path=/; samesite=lax; secure`;
           console.log('🔀 Redirigiendo a psia.html');
           window.location.href = 'psia.html';
         })
