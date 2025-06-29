@@ -13,12 +13,6 @@
   status = 200
   force  = true
 
-# Protegemos temas.html
-[[redirects]]
-  from   = "/temas.html"
-  to     = "/.netlify/functions/protect?file=temas.html"
-  status = 200
-  force  = true
 
 # Añade más páginas protegidas si las necesitas
 # [[redirects]]

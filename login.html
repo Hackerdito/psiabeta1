@@ -12,6 +12,21 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 
+  <!-- 3) Configuración de Firebase (inline) -->
+<script>
+  // Tu config copiada de la consola de Firebase:
+  const firebaseConfig = {
+    apiKey: "AIzaSyAQoF5u1TOSm-_s2qGxzcWIs9je-oi8ZOw",
+    authDomain: "psia-ai-5129f.firebaseapp.com",
+    projectId: "psia-ai-5129f",
+    storageBucket: "psia-ai-5129f.appspot.com",
+    messagingSenderId: "478655118040",
+    appId: "1:478655118040:web:34dd5b87cb4cd4ff3e35ad"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+
   <!-- Tu configuración (API key, authDomain, etc.) -->
   <script src="firebaseConfig.js"></script>
 </head>
@@ -32,13 +47,24 @@
     </form>
   </div>
 
+ <!-- Tu lógica de login -->
   <script>
-    // Inicializa Firebase (de firebaseConfig.js)
     const auth = firebase.auth();
 
-    // Manejador del formulario
-    document.getElementById('login-form').addEventListener('submit', e => {
-      e.preventDefault();
+    // Verifica que Firebase esté inicializado
+    console.log('Firebase apps:', firebase.apps.length);
+
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM ready, enlazando form…');
+      document.getElementById('login-form').addEventListener('submit', e => {
+        e.preventDefault();
+        console.log('loginUser llamado');
+        loginUser();
+      });
+    });
+
+    function loginUser() {
+      console.log('Dentro de loginUser()');
       const errDiv = document.getElementById('error-msg');
       errDiv.style.display = 'none';
       const email = document.getElementById('email').value.trim();
@@ -51,20 +77,23 @@
       auth.signInWithEmailAndPassword(email, password)
         .then(u => u.user.getIdToken())
         .then(idToken => {
+          console.log('Login OK, token:', idToken.slice(0,10)+'…');
           document.cookie = `idToken=${idToken}; path=/; secure; samesite=strict;`;
-          // Redirige a la página que Netlify protegerá
           window.location.href = 'psia.html';
         })
         .catch(err => {
+          console.error('Error en signIn:', err);
           let msg = 'Error: ' + err.message;
           if (err.code === 'auth/invalid-email') msg = 'Formato de correo inválido.';
-          if (err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password') msg = 'Email o contraseña incorrectos.';
+          if (err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password')
+            msg = 'Email o contraseña incorrectos.';
           errDiv.textContent = msg;
           errDiv.style.display = 'block';
         });
-    });
+    }
   </script>
 
+  <!-- Bootstrap JS -->
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
