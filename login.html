@@ -12,9 +12,19 @@
   />
 
   <style>
-    /* Solo un poquito de centrado */
-    body { display:flex; align-items:center; justify-content:center; min-height:100vh; background:#f5f5f5; }
-    .card { width:100%; max-width:400px; padding:2rem; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #f5f5f5;
+    }
+    .card {
+      width: 100%;
+      max-width: 400px;
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
   </style>
 </head>
 <body>
@@ -42,12 +52,13 @@
   <script>
     console.log('🛠️ Configurando Firebase…');
     const firebaseConfig = {
-      apiKey: "AIzaSyAQoF5u1TOSm-_s2qGxzcWIs9je-oi8ZOw",
-      authDomain: "psia-ai-5129f.firebaseapp.com",
-      projectId: "psia-ai-5129f",
-      storageBucket: "psia-ai-5129f.appspot.com",
-      messagingSenderId: "478655118040",
-      appId: "1:478655118040:web:34dd5b87cb4cd4ff3e35ad"
+      apiKey: "AIzaSyBfn9o6Vd317UrBBtXEH2lRL8EXnfxYIC0",
+      authDomain: "login-web-a4856.firebaseapp.com",
+      projectId: "login-web-a4856",
+      storageBucket: "login-web-a4856.firebasestorage.app",
+      messagingSenderId: "952487862914",
+      appId: "1:952487862914:web:d38ee52e523f544e098a9b",
+      measurementId: "G-MP4JJX168Z"
     };
     firebase.initializeApp(firebaseConfig);
     console.log('✅ Firebase apps:', firebase.apps.length);
