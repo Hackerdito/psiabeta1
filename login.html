@@ -13,7 +13,15 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 
   <!-- 3) Configuración de Firebase (inline) -->
-<script> src="firebaseConfig.js"</script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBfn9o6Vd317UrBBtXEH2lRL8EXnfxYIC0",
+  authDomain: "login-web-a4856.firebaseapp.com",
+  projectId: "login-web-a4856",
+    // …
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
 
   <!-- Tu configuración (API key, authDomain, etc.) -->
 </head>
